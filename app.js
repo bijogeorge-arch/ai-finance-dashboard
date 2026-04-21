@@ -91,7 +91,7 @@ addBtn.addEventListener("click", () => {
   // Update UI after adding
   updateCards(transactions);
   renderTransactions(transactions);
-generateInsights(transactions); // add this
+  generateInsights(transactions); // add this
 
   // Clear form inputs
   clearForm();
@@ -104,4 +104,36 @@ generateInsights(transactions); // add this
     txtCategory,
     txtMonth,
   });
+});
+
+const applyFilters = document.querySelector("#apply-filters");
+applyFilters.addEventListener("click", () => {
+  const filterMonth = document.querySelector("#filter-month").value;
+  const filterCategory = document.querySelector("#filter-category").value;
+  const filterMin = document.querySelector("#filter-min").value;
+  const filterMax = document.querySelector("#filter-max").value;
+  console.log({ filterMonth, filterCategory, filterMin, filterMax }); // ADD THIS
+
+
+  const filtered = transactions.filter((t) => {
+    console.log(t.month, filterMonth, t.category, filterCategory); // ADD THIS
+
+    if (filterMonth != "all" && t.month !== filterMonth) return false;
+    if (filterCategory !== "all" && t.category !== filterCategory) return false; // ✅    if (filterMin !== "" && t.amount < Number(filterMin)) return false;
+    if (filterMax !== "" && t.amount > Number(filterMax)) return false;
+
+    return true;
+  });
+  console.log("filtered results:", filtered); // ADD THIS
+
+  renderTransactions(filtered);
+});
+
+// ADD THIS RIGHT BELOW 👇
+document.querySelector("#reset-filters").addEventListener("click", () => {
+  document.querySelector("#filter-month").value = "all";
+  document.querySelector("#filter-category").value = "all";
+  document.querySelector("#filter-min").value = "";
+  document.querySelector("#filter-max").value = "";
+  renderTransactions(transactions);
 });
