@@ -10,11 +10,17 @@ const API_MODEL = "google/gemma-4-26b-a4b-it"; // free model
 export const generateInsights = async (transactions) => {
   const panel = document.querySelector("#insights-panel");
 
+  // If no valid API key, show fallback
+  if (!API_KEY || API_KEY === "YOUR_API_KEY_HERE") {
+    panel.innerHTML = `<div class="insight-card">
+      🤖 AI Insights require an API key. 
+      <br>Add your OpenRouter API key in config.js to enable AI-powered insights.
+    </div>`;
+    return;
+  }
+
   // Show loading state
-  panel.innerHTML = ` <div class="insight-card">
-    🤖 AI Insights available in local demo. 
-    <br>See video demo below.
-  </div>`;
+  panel.innerHTML = `<div class="insight-card">⏳ Generating AI insights...</div>`;
 
   // Build summary from real data
   const income    = getTotalIncome(transactions);
