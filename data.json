@@ -1,0 +1,8 @@
+[
+  { "id": 1, "type": "income", "category": "Salary", "amount": 50000, "month": "Jan" },
+  { "id": 2, "type": "expense", "category": "Rent", "amount": 25000, "month": "Feb" },
+  { "id": 3, "type": "expense", "category": "Food", "amount": 4500, "month": "Jan" },
+  { "id": 4, "type": "income", "category": "Salary", "amount": 85000, "month": "Jan" },
+  { "id": 5, "type": "expense", "category": "Food", "amount": 6000, "month": "Feb" },
+  { "id": 6, "type": "income", "category": "Salary", "amount": 450000, "month": "Jan" }
+]
