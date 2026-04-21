@@ -1,10 +1,9 @@
 import { getTotalIncome, getTotalExpenses, getNetSavings } from "./calculations.js";
-
+import { API_KEY } from "./config.js";
 // ================================================
 // 🤖 AI INSIGHTS — OpenRouter API
 // ================================================
 
-const API_KEY   = "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"; // 🔑 replace this
 const API_URL   = "https://openrouter.ai/api/v1/chat/completions";
 const API_MODEL = "google/gemma-4-26b-a4b-it"; // free model
 
@@ -12,7 +11,10 @@ export const generateInsights = async (transactions) => {
   const panel = document.querySelector("#insights-panel");
 
   // Show loading state
-  panel.innerHTML = `<div class="insight-card">🤖 Analyzing your finances...</div>`;
+  panel.innerHTML = ` <div class="insight-card">
+    🤖 AI Insights available in local demo. 
+    <br>See video demo below.
+  </div>`;
 
   // Build summary from real data
   const income    = getTotalIncome(transactions);
